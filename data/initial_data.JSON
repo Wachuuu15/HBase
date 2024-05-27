@@ -1,28 +1,53 @@
 {
-    "00001":
-    {
-        "Personal":
-        {
-            "Name":
-            {
-                "Timestamp1":"John"
+    "Employees": {
+        "00001": {
+            "Personal": {
+                "Name": {
+                    "Timestamp1": "John"
+                },
+                "Residence Phone": {
+                    "Timestamp1": "415-111-11111",
+                    "Timestamp2": "415-111-1234"
+                }
             },
-            "Residence Phone":
-            {
-                "Timestamp1":"415-111-11111",
-                "Timestamp2":"415-111-1234"
+            "Office": {
+                "Phone": {
+                    "Timestamp1": "415-212-55444"
+                },
+                "Address": {
+                    "Timestamp1": "1021 market st"
+                }
             }
         },
-
-        "Office":
-        {
-            "Phone":
-            {
-                "Timestamp1":"415-212-55444"
+        "00002": {
+            "Personal": {
+                "Name": {
+                    "Timestamp1": "Jane"
+                },
+                "Residence Phone": {
+                    "Timestamp1": "415-222-2222",
+                    "Timestamp2": "415-222-3333"
+                }
             },
-            "Address":
-            {
-                "Timestamp1":"1021 market st"
+            "Office": {
+                "Phone": {
+                    "Timestamp1": "415-333-55444"
+                },
+                "Address": {
+                    "Timestamp1": "1033 market st"
+                }
+            }
+        }
+    },
+    "Customers": {
+        "10001": {
+            "Contact": {
+                "Phone": {
+                    "Timestamp1": "415-999-55444"
+                },
+                "Email": {
+                    "Timestamp1": "customer@example.com"
+                }
             }
         }
     }

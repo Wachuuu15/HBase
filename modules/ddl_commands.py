@@ -1,6 +1,6 @@
 import json
 
-# Este diccionario simulará nuestra "base de datos" con las tablas y sus datos.
+# Este diccionario simulará nuestra "base de datos" con las tablas.
 tables = {}
 
 def load_initial_data():
@@ -8,20 +8,22 @@ def load_initial_data():
     try:
         with open('data/initial_data.json', 'r') as file:
             initial_data = json.load(file)
-        for row_key, contents in initial_data.items():
-            for family, columns in contents.items():
-                if row_key not in tables:
-                    tables[row_key] = {}
-                tables[row_key][family] = columns
+        for table_name, table_data in initial_data.items():
+            create_table(table_name)
+            for row_key, contents in table_data.items():
+                for family, columns in contents.items():
+                    if family not in tables[table_name]:
+                        tables[table_name][family] = {}
+                    tables[table_name][family][row_key] = columns
         print("Datos iniciales cargados correctamente.")
     except FileNotFoundError:
         print("Archivo de datos inicial no encontrado.")
 
-def create_table(table_name, column_families):
-    """Crea una tabla con las familias de columnas especificadas."""
+def create_table(table_name):
+    """Crea una tabla vacía para almacenar datos."""
     if table_name not in tables:
-        tables[table_name] = {cf: {} for cf in column_families}  # Crea un diccionario vacío para cada familia de columnas.
-        print(f"Tabla '{table_name}' creada con column families {column_families}.")
+        tables[table_name] = {}
+        print(f"Tabla '{table_name}' creada.")
     else:
         print(f"Error: La tabla '{table_name}' ya existe.")
 
