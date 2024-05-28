@@ -1,15 +1,17 @@
 # main.py
 from modules.ddl_commands import (
     create_table, list_tables, disable_table, is_enabled, alter_table_add_family,
-    load_initial_data, save_data, drop_table, drop_all_tables,describe_table
+    load_initial_data, save_data, drop_table, drop_all_tables, describe_table
 )
 
-def main():
-    # Cargando los datos iniciales
-    load_initial_data()
+from modules.dml_commands import (
+    put, get
+)
 
+def main_ddl():
+    load_initial_data()
+    print("\nMenú DDL (Definición de Datos):")
     while True:
-        print("\nMenú de Opciones:")
         print("1. Crear nueva tabla")
         print("2. Listar todas las tablas")
         print("3. Deshabilitar una tabla")
@@ -50,6 +52,61 @@ def main():
             drop_all_tables()
         else:
             print("Opción no reconocida, por favor intente nuevamente.")
+
+def main_dml():
+    print("\nMenú DML (Manipulación de Datos):")
+    while True:
+        print("1. Insertar dato a la tabla")
+        print("2. Obtener datos de la tabla")
+        print("3. Scan")
+        print("4. Borrar")
+        print("5. Borrar todo")
+        print("6. Count")
+        print("7. Truncate")
+        print("8. Salir")
+        command = input("Seleccione una opción (1-8): ")
+
+        if command == "8":
+            print("Guardando datos y saliendo...")
+            save_data()
+            break
+        elif command == "1":
+            table_name = input("Ingrese el nombre de la tabla a modificar: ")
+            row_key = input("Ingrese el row key: ")
+            family_name = input("Ingrese el nombre de la familia de columnas: ")
+            column_name = input("Ingrese el nombre de la columna: ")
+            value = input("Ingrese el valor a insertar: ")
+            put(table_name, row_key, family_name, column_name, value)
+
+        elif command == "2":
+            table_name = input("Ingrese el nombre de la tabla a modificar: ")
+            row_key = input("Ingrese el row key: ")
+            family_name = input("Ingrese el nombre de la familia de columnas: ")
+            column_name = input("Ingrese el nombre de la columna: ")
+            timestamp_input = input("Ingrese el timestamp si desea obtener una versión específica, de lo contrario presione Enter: ")
+
+            # Convertimos el input de timestamp a int si se proporciona, de lo contrario lo dejamos como None
+            timestamp = int(timestamp_input) if timestamp_input.isdigit() else None
+
+            value = get(table_name, row_key, family_name, column_name, timestamp)
+            if value is not None:
+                print(f"Valor recuperado: {value}")
+            else:
+                print("No se pudo recuperar ningún valor.")
+
+
+def main():
+    print("Seleccione el modo de operación:")
+    print("1. DDL (Definición de Datos)")
+    print("2. DML (Manipulación de Datos)")
+    choice = input("Ingrese su elección (1-2): ")
+
+    if choice == "1":
+        main_ddl()
+    elif choice == "2":
+        main_dml()
+    else:
+        print("Opción no válida. Por favor, intente de nuevo.")
 
 if __name__ == "__main__":
     main()
