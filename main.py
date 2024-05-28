@@ -46,7 +46,8 @@ def main_ddl():
             table_name = input("Ingrese el nombre de la tabla a eliminar: ")
             drop_table(table_name)
         elif command == "7":
-            describe_table()
+            table_name = input("Ingrese el nombre de la tabla a describir: ")
+            describe_table(table_name)
         elif command == "8":
             drop_all_tables()
         else:
