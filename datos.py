@@ -3,7 +3,7 @@ import json
 import os
 
 # Cargar los datos del CSV
-df = pd.read_csv('netflix_titles2.csv')
+df = pd.read_csv('netflix_titles.csv', encoding='latin1')
 
 # Verificar si la carpeta 'data' existe, si no, crearla
 if not os.path.exists('data'):
@@ -20,11 +20,10 @@ for index, row in df.iterrows():
     category = "Movie" if row['type'] == "Movie" else "TV Show"
     
     data_json[category][row['show_id']] = {
-        "title": {
-            "Timestamp1": get_value_or_na(row['title'])
+        "Title":{
+            "Title": {"Timestamp1": get_value_or_na(row['title'])}
         },
         "Details": {
-            "Type": {"Timestamp1": get_value_or_na(row['type'])},
             "Duration": {"Timestamp1": get_value_or_na(row['duration'])},
             "Rating": {"Timestamp1": get_value_or_na(row['rating'])},
             "Listed in": {"Timestamp1": get_value_or_na(row['listed_in'])},
