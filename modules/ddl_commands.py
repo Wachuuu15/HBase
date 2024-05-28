@@ -57,8 +57,45 @@ def is_enabled(table_name):
     else:
         print(f"Error: La tabla '{table_name}' no existe.")
         return False
-    
-    
+
+
+def alter_table_add_family(table_name, new_family):
+    """Añade una nueva familia de columnas a una tabla existente."""
+    if table_name in tables:
+        if new_family in tables[table_name]:
+            print(f"Error: La familia de columnas '{new_family}' ya existe en la tabla '{table_name}'.")
+        else:
+            tables[table_name][new_family] = {}  
+            print(f"Familia de columnas '{new_family}' añadida a la tabla '{table_name}'.")
+    else:
+        print(f"Error: La tabla '{table_name}' no existe.")
+
+def drop_table(table_name):
+    """Elimina una tabla específica."""
+    if table_name in tables:
+        del tables[table_name]
+        print(f"Tabla '{table_name}' eliminada correctamente.")
+    else:
+        print(f"Error: La tabla '{table_name}' no existe.")
+
+def drop_all_tables():
+    """Elimina todas las tablas."""
+    tables.clear()
+    print("Todas las tablas han sido eliminadas.")
+
+def describe_table(table_name):
+    """Muestra una descripción detallada de la estructura de una tabla específica."""
+    if table_name in tables:
+        print(f"Descripción de la tabla '{table_name}':")
+        if tables[table_name]:
+            for family, content in tables[table_name].items():
+                print(f"  Familia de Columnas: {family}")
+                print(f"    Detalles: {content}")
+        else:
+            print("  Esta tabla no tiene familias de columnas definidas.")
+    else:
+        print(f"Error: La tabla '{table_name}' no existe.")
+
 def save_data():
     """Guarda los datos actuales en un archivo JSON."""
     with open('data/current_data.json', 'w') as file:
