@@ -1,0 +1,386 @@
+{
+    "Movie": {
+        "s1": {
+            "title": {
+                "Timestamp1": "Dick Johnson Is Dead"
+            },
+            "Details": {
+                "Type": {
+                    "Timestamp1": "Movie"
+                },
+                "Duration": {
+                    "Timestamp1": "90 min"
+                },
+                "Rating": {
+                    "Timestamp1": "PG-13"
+                },
+                "Listed in": {
+                    "Timestamp1": "Documentaries"
+                },
+                "Description": {
+                    "Timestamp1": "As her father nears the end of his life, filmmaker Kirsten Johnson stages his death in inventive and comical ways to help them both face the inevitable."
+                }
+            },
+            "Dates": {
+                "Date added": {
+                    "Timestamp1": "September 25, 2021"
+                },
+                "Release year": {
+                    "Timestamp1": "2020"
+                }
+            },
+            "People": {
+                "Director": {
+                    "Timestamp1": "Kirsten Johnson"
+                },
+                "Cast": {
+                    "Timestamp1": "NA"
+                }
+            }
+        },
+        "s7": {
+            "title": {
+                "Timestamp1": "My Little Pony: A New Generation"
+            },
+            "Details": {
+                "Type": {
+                    "Timestamp1": "Movie"
+                },
+                "Duration": {
+                    "Timestamp1": "91 min"
+                },
+                "Rating": {
+                    "Timestamp1": "PG"
+                },
+                "Listed in": {
+                    "Timestamp1": "Children & Family Movies"
+                },
+                "Description": {
+                    "Timestamp1": "Equestria's divided. But a bright-eyed hero believes Earth Ponies, Pegasi and Unicorns should be pals \u2014 and, hoof to heart, she\u2019s determined to prove it."
+                }
+            },
+            "Dates": {
+                "Date added": {
+                    "Timestamp1": "September 24, 2021"
+                },
+                "Release year": {
+                    "Timestamp1": "2021"
+                }
+            },
+            "People": {
+                "Director": {
+                    "Timestamp1": "Robert Cullen, Jos\u00e9 Luis Ucha"
+                },
+                "Cast": {
+                    "Timestamp1": "Vanessa Hudgens, Kimiko Glenn, James Marsden, Sofia Carson, Liza Koshy, Ken Jeong, Elizabeth Perkins, Jane Krakowski, Michael McKean, Phil LaMarr"
+                }
+            }
+        },
+        "s8": {
+            "title": {
+                "Timestamp1": "Sankofa"
+            },
+            "Details": {
+                "Type": {
+                    "Timestamp1": "Movie"
+                },
+                "Duration": {
+                    "Timestamp1": "125 min"
+                },
+                "Rating": {
+                    "Timestamp1": "TV-MA"
+                },
+                "Listed in": {
+                    "Timestamp1": "Dramas, Independent Movies, International Movies"
+                },
+                "Description": {
+                    "Timestamp1": "On a photo shoot in Ghana, an American model slips back in time, becomes enslaved on a plantation and bears witness to the agony of her ancestral past."
+                }
+            },
+            "Dates": {
+                "Date added": {
+                    "Timestamp1": "September 24, 2021"
+                },
+                "Release year": {
+                    "Timestamp1": "1993"
+                }
+            },
+            "People": {
+                "Director": {
+                    "Timestamp1": "Haile Gerima"
+                },
+                "Cast": {
+                    "Timestamp1": "Kofi Ghanaba, Oyafunmike Ogunlano, Alexandra Duah, Nick Medley, Mutabaruka, Afemo Omilami, Reggie Carter, Mzuri"
+                }
+            }
+        },
+        "s10": {
+            "title": {
+                "Timestamp1": "The Starling"
+            },
+            "Details": {
+                "Type": {
+                    "Timestamp1": "Movie"
+                },
+                "Duration": {
+                    "Timestamp1": "104 min"
+                },
+                "Rating": {
+                    "Timestamp1": "PG-13"
+                },
+                "Listed in": {
+                    "Timestamp1": "Comedies, Dramas"
+                },
+                "Description": {
+                    "Timestamp1": "A woman adjusting to life after a loss contends with a feisty bird that's taken over her garden \u2014 and a husband who's struggling to find a way forward."
+                }
+            },
+            "Dates": {
+                "Date added": {
+                    "Timestamp1": "September 24, 2021"
+                },
+                "Release year": {
+                    "Timestamp1": "2021"
+                }
+            },
+            "People": {
+                "Director": {
+                    "Timestamp1": "Theodore Melfi"
+                },
+                "Cast": {
+                    "Timestamp1": "Melissa McCarthy, Chris O'Dowd, Kevin Kline, Timothy Olyphant, Daveed Diggs, Skyler Gisondo, Laura Harrier, Rosalind Chao, Kimberly Quinn, Loretta Devine, Ravi Kapoor"
+                }
+            }
+        }
+    },
+    "TV Show": {
+        "s2": {
+            "title": {
+                "Timestamp1": "Blood & Water"
+            },
+            "Details": {
+                "Type": {
+                    "Timestamp1": "TV Show"
+                },
+                "Duration": {
+                    "Timestamp1": "2 Seasons"
+                },
+                "Rating": {
+                    "Timestamp1": "TV-MA"
+                },
+                "Listed in": {
+                    "Timestamp1": "International TV Shows, TV Dramas, TV Mysteries"
+                },
+                "Description": {
+                    "Timestamp1": "After crossing paths at a party, a Cape Town teen sets out to prove whether a private-school swimming star is her sister who was abducted at birth."
+                }
+            },
+            "Dates": {
+                "Date added": {
+                    "Timestamp1": "September 24, 2021"
+                },
+                "Release year": {
+                    "Timestamp1": "2021"
+                }
+            },
+            "People": {
+                "Director": {
+                    "Timestamp1": "NA"
+                },
+                "Cast": {
+                    "Timestamp1": "Ama Qamata, Khosi Ngema, Gail Mabalane, Thabang Molaba, Dillon Windvogel, Natasha Thahane, Arno Greeff, Xolile Tshabalala, Getmore Sithole, Cindy Mahlangu, Ryle De Morny, Greteli Fincham, Sello Maake Ka-Ncube, Odwa Gwanya, Mekaila Mathys, Sandi Schultz, Duane Williams, Shamilla Miller, Patrick Mofokeng"
+                }
+            }
+        },
+        "s3": {
+            "title": {
+                "Timestamp1": "Ganglands"
+            },
+            "Details": {
+                "Type": {
+                    "Timestamp1": "TV Show"
+                },
+                "Duration": {
+                    "Timestamp1": "1 Season"
+                },
+                "Rating": {
+                    "Timestamp1": "TV-MA"
+                },
+                "Listed in": {
+                    "Timestamp1": "Crime TV Shows, International TV Shows, TV Action & Adventure"
+                },
+                "Description": {
+                    "Timestamp1": "To protect his family from a powerful drug lord, skilled thief Mehdi and his expert team of robbers are pulled into a violent and deadly turf war."
+                }
+            },
+            "Dates": {
+                "Date added": {
+                    "Timestamp1": "September 24, 2021"
+                },
+                "Release year": {
+                    "Timestamp1": "2021"
+                }
+            },
+            "People": {
+                "Director": {
+                    "Timestamp1": "Julien Leclercq"
+                },
+                "Cast": {
+                    "Timestamp1": "Sami Bouajila, Tracy Gotoas, Samuel Jouy, Nabiha Akkari, Sofia Lesaffre, Salim Kechiouche, Noureddine Farihi, Geert Van Rampelberg, Bakary Diombera"
+                }
+            }
+        },
+        "s4": {
+            "title": {
+                "Timestamp1": "Jailbirds New Orleans"
+            },
+            "Details": {
+                "Type": {
+                    "Timestamp1": "TV Show"
+                },
+                "Duration": {
+                    "Timestamp1": "1 Season"
+                },
+                "Rating": {
+                    "Timestamp1": "TV-MA"
+                },
+                "Listed in": {
+                    "Timestamp1": "Docuseries, Reality TV"
+                },
+                "Description": {
+                    "Timestamp1": "Feuds, flirtations and toilet talk go down among the incarcerated women at the Orleans Justice Center in New Orleans on this gritty reality series."
+                }
+            },
+            "Dates": {
+                "Date added": {
+                    "Timestamp1": "September 24, 2021"
+                },
+                "Release year": {
+                    "Timestamp1": "2021"
+                }
+            },
+            "People": {
+                "Director": {
+                    "Timestamp1": "NA"
+                },
+                "Cast": {
+                    "Timestamp1": "NA"
+                }
+            }
+        },
+        "s5": {
+            "title": {
+                "Timestamp1": "Kota Factory"
+            },
+            "Details": {
+                "Type": {
+                    "Timestamp1": "TV Show"
+                },
+                "Duration": {
+                    "Timestamp1": "2 Seasons"
+                },
+                "Rating": {
+                    "Timestamp1": "TV-MA"
+                },
+                "Listed in": {
+                    "Timestamp1": "International TV Shows, Romantic TV Shows, TV Comedies"
+                },
+                "Description": {
+                    "Timestamp1": "In a city of coaching centers known to train India\u2019s finest collegiate minds, an earnest but unexceptional student and his friends navigate campus life."
+                }
+            },
+            "Dates": {
+                "Date added": {
+                    "Timestamp1": "September 24, 2021"
+                },
+                "Release year": {
+                    "Timestamp1": "2021"
+                }
+            },
+            "People": {
+                "Director": {
+                    "Timestamp1": "NA"
+                },
+                "Cast": {
+                    "Timestamp1": "Mayur More, Jitendra Kumar, Ranjan Raj, Alam Khan, Ahsaas Channa, Revathi Pillai, Urvi Singh, Arun Kumar"
+                }
+            }
+        },
+        "s6": {
+            "title": {
+                "Timestamp1": "Midnight Mass"
+            },
+            "Details": {
+                "Type": {
+                    "Timestamp1": "TV Show"
+                },
+                "Duration": {
+                    "Timestamp1": "1 Season"
+                },
+                "Rating": {
+                    "Timestamp1": "TV-MA"
+                },
+                "Listed in": {
+                    "Timestamp1": "TV Dramas, TV Horror, TV Mysteries"
+                },
+                "Description": {
+                    "Timestamp1": "The arrival of a charismatic young priest brings glorious miracles, ominous mysteries and renewed religious fervor to a dying town desperate to believe."
+                }
+            },
+            "Dates": {
+                "Date added": {
+                    "Timestamp1": "September 24, 2021"
+                },
+                "Release year": {
+                    "Timestamp1": "2021"
+                }
+            },
+            "People": {
+                "Director": {
+                    "Timestamp1": "Mike Flanagan"
+                },
+                "Cast": {
+                    "Timestamp1": "Kate Siegel, Zach Gilford, Hamish Linklater, Henry Thomas, Kristin Lehman, Samantha Sloyan, Igby Rigney, Rahul Kohli, Annarah Cymone, Annabeth Gish, Alex Essoe, Rahul Abburi, Matt Biedel, Michael Trucco, Crystal Balint, Louis Oliver"
+                }
+            }
+        },
+        "s9": {
+            "title": {
+                "Timestamp1": "The Great British Baking Show"
+            },
+            "Details": {
+                "Type": {
+                    "Timestamp1": "TV Show"
+                },
+                "Duration": {
+                    "Timestamp1": "9 Seasons"
+                },
+                "Rating": {
+                    "Timestamp1": "TV-14"
+                },
+                "Listed in": {
+                    "Timestamp1": "British TV Shows, Reality TV"
+                },
+                "Description": {
+                    "Timestamp1": "A talented batch of amateur bakers face off in a 10-week competition, whipping up their best dishes in the hopes of being named the U.K.'s best."
+                }
+            },
+            "Dates": {
+                "Date added": {
+                    "Timestamp1": "September 24, 2021"
+                },
+                "Release year": {
+                    "Timestamp1": "2021"
+                }
+            },
+            "People": {
+                "Director": {
+                    "Timestamp1": "Andy Devonshire"
+                },
+                "Cast": {
+                    "Timestamp1": "Mel Giedroyc, Sue Perkins, Mary Berry, Paul Hollywood"
+                }
+            }
+        }
+    }
+}
