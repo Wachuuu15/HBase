@@ -2,7 +2,7 @@
 import json
 
 tables = {}
-from ddl_commands import disable_table, is_enabled
+from .ddl_commands import disable_table, is_enabled
 
 def put(table_name, row_key, family_name, column_name, value, timestamp=None):
     """Inserta o actualiza un valor en una tabla específica."""

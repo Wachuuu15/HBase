@@ -79,7 +79,7 @@ def main_dml():
             put(table_name, row_key, family_name, column_name, value)
 
         elif command == "2":
-            table_name = input("Ingrese el nombre de la tabla a modificar: ")
+            table_name = input("Ingrese el nombre de la tabla: ")
             row_key = input("Ingrese el row key: ")
             family_name = input("Ingrese el nombre de la familia de columnas: ")
             column_name = input("Ingrese el nombre de la columna: ")

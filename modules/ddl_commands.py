@@ -6,7 +6,7 @@ tables = {}
 def load_initial_data():
     """Carga los datos iniciales desde un archivo JSON."""
     try:
-        with open('data/initial_data.json', 'r') as file:
+        with open('data/output.json', 'r') as file:
             initial_data = json.load(file)
         for table_name, table_data in initial_data.items():
             create_table(table_name)
