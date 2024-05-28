@@ -5,7 +5,7 @@ from modules.ddl_commands import (
 )
 
 from modules.dml_commands import (
-    put, get
+    put, get, scan, delete, delete_all, count, truncate
 )
 
 def main_ddl():
@@ -85,7 +85,6 @@ def main_dml():
             column_name = input("Ingrese el nombre de la columna: ")
             timestamp_input = input("Ingrese el timestamp si desea obtener una versión específica, de lo contrario presione Enter: ")
 
-            # Convertimos el input de timestamp a int si se proporciona, de lo contrario lo dejamos como None
             timestamp = int(timestamp_input) if timestamp_input.isdigit() else None
 
             value = get(table_name, row_key, family_name, column_name, timestamp)
@@ -93,6 +92,35 @@ def main_dml():
                 print(f"Valor recuperado: {value}")
             else:
                 print("No se pudo recuperar ningún valor.")
+
+        elif command == "3":
+            table_name = input("Ingrese el nombre de la tabla a escanear: ")
+            family_name = input("Ingrese el nombre de la familia de columnas (Enter para omitir): ")
+            start_row = input("Ingrese la row key inicial para el rango de escaneo (Enter para omitir): ")
+            end_row = input("Ingrese la row key final para el rango de escaneo (Enter para omitir): ")
+            scan(table_name, family_name if family_name else None, start_row if start_row else None, end_row if end_row else None)
+        
+        elif command == "4":
+            table_name = input("Ingrese el nombre de la tabla: ")
+            row_key = input("Ingrese el row key a eliminar (deje en blanco para borrar toda la fila): ")
+            family_name = input("Ingrese la familia de columnas a eliminar (deje en blanco para borrar toda la familia): ")
+            column_name = input("Ingrese el nombre de la columna a eliminar (deje en blanco para borrar la columna completa): ")
+            delete(table_name, row_key, family_name if family_name else None, column_name if column_name else None)
+
+        elif command == "5":
+            table_name = input("Ingrese el nombre de la tabla de la cual borrar todas las filas: ")
+            delete_all(table_name)
+
+
+        elif command == "6":
+            table_name = input("Ingrese el nombre de la tabla para contar sus filas: ")
+            count(table_name)
+        
+        elif command == "7":
+            table_name = input("Ingrese el nombre de la tabla a truncar: ")
+            truncate(table_name)
+        else:
+            print("Opción no reconocida, por favor intente nuevamente.")
 
 
 def main():
