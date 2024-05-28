@@ -1,6 +1,8 @@
+# ddl_commands.py
+
 import json
 
-# Este diccionario simulará nuestra "base de datos" con las tablas.
+# Este diccionario simula nuestra "base de datos" con las tablas.
 tables = {}
 
 def load_initial_data():
@@ -9,7 +11,8 @@ def load_initial_data():
         with open('data/output.json', 'r') as file:
             initial_data = json.load(file)
         for table_name, table_data in initial_data.items():
-            create_table(table_name)
+            if table_name not in tables:
+                tables[table_name] = {}
             for row_key, contents in table_data.items():
                 for family, columns in contents.items():
                     if family not in tables[table_name]:

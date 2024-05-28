@@ -9,7 +9,6 @@ from modules.dml_commands import (
 )
 
 def main_ddl():
-    load_initial_data()
     print("\nMenú DDL (Definición de Datos):")
     while True:
         print("1. Crear nueva tabla")
@@ -124,6 +123,7 @@ def main_dml():
 
 
 def main():
+    load_initial_data()  
     print("Seleccione el modo de operación:")
     print("1. DDL (Definición de Datos)")
     print("2. DML (Manipulación de Datos)")
