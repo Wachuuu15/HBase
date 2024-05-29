@@ -1,5 +1,7 @@
 from .ddl_commands import tables, disable_table, is_enabled
 import json
+import re
+
 
 def put(table_name, row_key, family_name, column_name, value, timestamp=None):
     if table_name not in tables:
@@ -16,10 +18,11 @@ def put(table_name, row_key, family_name, column_name, value, timestamp=None):
     if not timestamp:
         current_versions = tables[table_name][family_name][row_key][column_name]
         if current_versions:
-            latest_version = max(current_versions.keys())
-            timestamp = latest_version + 1
+            latest_version = max(current_versions.keys(), key=lambda x: int(re.search(r'\d+', x).group()))
+            latest_number = int(re.search(r'\d+', latest_version).group())
+            timestamp = f"Timestamp{latest_number + 1}"
         else:
-            timestamp = 1
+            timestamp = "Timestamp1"
 
     tables[table_name][family_name][row_key][column_name][timestamp] = value
     print(f"Dato insertado/actualizado en {table_name} -> {family_name}[{row_key}][{column_name}] con versión {timestamp}")
@@ -51,18 +54,18 @@ def get(table_name, row_key, family_name, column_name, timestamp=None):
         return None
 
 def scan(table_name, family_name=None, start_row=None, end_row=None):
-    """Escanea y muestra filas de una tabla desde start_row hasta end_row, opcionalmente filtrado por familia de columnas."""
     if table_name not in tables:
         print(f"Error: La tabla '{table_name}' no existe.")
         return
     
     print(f"Datos de la tabla '{table_name}':")
+    found_data = False  # Para verificar si se encontraron datos
     for row_key in sorted(tables[table_name]):
         if (start_row and row_key < start_row) or (end_row and row_key > end_row):
-            continue  # Filtra las row keys que no están en el rango especificado
+            continue
         
         if family_name and family_name not in tables[table_name][row_key]:
-            continue  # Si se especifica una familia y no está en la row key, salta esta iteración
+            continue
 
         print(f"Row Key: {row_key}")
         families = [family_name] if family_name else tables[table_name][row_key].keys()
@@ -70,9 +73,12 @@ def scan(table_name, family_name=None, start_row=None, end_row=None):
             print(f"  Familia de Columnas: {fam}")
             for column, versions in tables[table_name][row_key][fam].items():
                 print(f"    Columna: {column}")
-                for timestamp, value in versions.items():
-                    print(f"      Timestamp: {timestamp}, Valor: {value}")
+                for timestamp, value in sorted(versions.items()):
+                    print(f"      {timestamp}: {value}")
+                    found_data = True
 
+    if not found_data:
+        print("No se encontraron datos que coincidan con los criterios especificados.")
 
 def delete(table_name, row_key, family_name=None, column_name=None):
     """Elimina una celda o fila específica en una tabla."""

@@ -70,6 +70,7 @@ def main_dml():
             print("Guardando datos y saliendo...")
             save_data()
             break
+
         elif command == "1":
             table_name = input("Ingrese el nombre de la tabla a modificar: ")
             row_key = input("Ingrese el row key: ")
@@ -94,10 +95,11 @@ def main_dml():
                 print("No se pudo recuperar ningún valor.")
 
         elif command == "3":
-            table_name = input("Ingrese el nombre de la tabla a escanear: ")
-            family_name = input("Ingrese el nombre de la familia de columnas (Enter para omitir): ")
-            start_row = input("Ingrese la row key inicial para el rango de escaneo (Enter para omitir): ")
-            end_row = input("Ingrese la row key final para el rango de escaneo (Enter para omitir): ")
+            print("Ingrese los detalles para escanear la tabla:")
+            table_name = input("Nombre de la tabla a escanear: ")
+            family_name = input("Nombre de la familia de columnas (presione Enter para omitir): ")
+            start_row = input("Row key inicial para el rango de escaneo (presione Enter para omitir): ")
+            end_row = input("Row key final para el rango de escaneo (presione Enter para omitir): ")
             scan(table_name, family_name if family_name else None, start_row if start_row else None, end_row if end_row else None)
         
         elif command == "4":
