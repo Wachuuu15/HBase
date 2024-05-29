@@ -8,19 +8,37 @@ from modules.dml_commands import (
     put, get, scan, delete, delete_all, count, truncate
 )
 
+menuDdl= """
+1. Crear nueva tabla
+2. Listar todas las tablas
+3. Deshabilitar una tabla
+4. Verificar si una tabla está habilitada
+5. Añadir familia de columnas a una tabla
+6. Eliminar una tabla
+7. Descripción de tabla
+8. Eliminar todas las tablas
+9. Salir
+"""
+
+menuDml= """
+1. Insertar dato a la tabla
+2. Obtener datos de la tabla
+3. Scan
+4. Borrar
+5. Borrar todo
+6. Count
+7. Truncate
+8. Salir
+"""
+
 def main_ddl():
     print("\nMenú DDL (Definición de Datos):")
     while True:
-        print("1. Crear nueva tabla")
-        print("2. Listar todas las tablas")
-        print("3. Deshabilitar una tabla")
-        print("4. Verificar si una tabla está habilitada")
-        print("5. Añadir familia de columnas a una tabla")
-        print("6. Eliminar una tabla")
-        print("7. Descripción de tabla")
-        print("8. Eliminar todas las tablas")
-        print("9. Salir")
+        print("------------------------------------------------------")
+        print(menuDdl)
+    
         command = input("Seleccione una opción (1-9): ")
+        print("------------------------------------------------------")
 
         if command == "9":
             print("Guardando datos y saliendo...")
@@ -56,15 +74,12 @@ def main_ddl():
 def main_dml():
     print("\nMenú DML (Manipulación de Datos):")
     while True:
-        print("1. Insertar dato a la tabla")
-        print("2. Obtener datos de la tabla")
-        print("3. Scan")
-        print("4. Borrar")
-        print("5. Borrar todo")
-        print("6. Count")
-        print("7. Truncate")
-        print("8. Salir")
+        print("------------------------------------------------------")
+
+        print(menuDml)
         command = input("Seleccione una opción (1-8): ")
+
+        print("------------------------------------------------------\n")
 
         if command == "8":
             print("Guardando datos y saliendo...")
@@ -127,9 +142,14 @@ def main_dml():
 
 def main():
     load_initial_data()  
-    print("Seleccione el modo de operación:")
-    print("1. DDL (Definición de Datos)")
-    print("2. DML (Manipulación de Datos)")
+
+    print("\n------------------------------------------------------")
+    print("""Seleccione el modo de operación:
+
+    1. DDL (Definición de Datos)
+    2. DML (Manipulación de Datos)
+    """)
+
     choice = input("Ingrese su elección (1-2): ")
 
     if choice == "1":
