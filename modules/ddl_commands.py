@@ -26,8 +26,17 @@ def load_initial_data():
 def create_table(table_name):
     """Crea una tabla vacía para almacenar datos."""
     if table_name not in tables:
-        tables[table_name] = {}
-        print(f"Tabla '{table_name}' creada.")
+        columnFamily = input("Ingrese el nombre de la Column Family: ")
+
+        if(columnFamily == ""):
+            print("Error: La tabla no tiene Column Family")
+            return
+            
+        else:
+            tables[table_name] = {}
+            alter_table_add_family(table_name, columnFamily)
+
+            print(f"Tabla '{table_name}' creada.")
     else:
         print(f"Error: La tabla '{table_name}' ya existe.")
 
@@ -45,11 +54,33 @@ def list_tables():
 def disable_table(table_name):
     """Deshabilita una tabla especificada."""
     if table_name in tables:
-        tables[table_name]['enabled'] = False
-        print(f"Tabla '{table_name}' ha sido deshabilitada.")
+        if 'enabled' not in tables[table_name]:
+            tables[table_name]['enabled'] = False
+            print(f"Tabla '{table_name}' ha sido deshabilitada.")
+
+            print("---------------------------------------")
+            print(tables[table_name])
+        elif tables[table_name]['enabled']:
+            tables[table_name]['enabled'] = False
+            print(f"Tabla '{table_name}' ha sido deshabilitada.")
+        else:
+            print(f"Error: La tabla {table_name} ya ha sido deshabilitada")
     else:
         print(f"Error: La tabla '{table_name}' no existe.")
 
+def enable_table(table_name):
+    """Habilita una tabla especificada."""
+    if table_name in tables:
+        if 'enabled' not in tables[table_name]:
+            tables[table_name]['enabled'] = True
+            print(f"Tabla '{table_name}' ha sido habilitada.")
+        elif tables[table_name]['enabled'] == False:
+            tables[table_name]['enabled'] = True
+            print(f"Tabla '{table_name}' ha sido deshabilitada.")
+        else:
+            print(f"Error: La tabla {table_name} ya ha sido habilitada")
+    else:
+        print(f"Error: La tabla '{table_name}' no existe.")
 
 def is_enabled(table_name):
     """Verifica si una tabla está habilitada."""

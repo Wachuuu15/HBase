@@ -1,7 +1,7 @@
 # main.py
 from modules.ddl_commands import (
     create_table, list_tables, disable_table, is_enabled, alter_table_add_family,
-    load_initial_data, save_data, drop_table, drop_all_tables, describe_table
+    load_initial_data, save_data, drop_table, drop_all_tables, describe_table, enable_table
 )
 
 from modules.dml_commands import (
@@ -17,7 +17,8 @@ menuDdl= """
 6. Eliminar una tabla
 7. Descripción de tabla
 8. Eliminar todas las tablas
-9. Salir
+9. Habilitar una tabla
+10. Salir
 """
 
 menuDml= """
@@ -40,7 +41,7 @@ def main_ddl():
         command = input("Seleccione una opción (1-9): ")
         print("------------------------------------------------------")
 
-        if command == "9":
+        if command == "10":
             print("Guardando datos y saliendo...")
             save_data()
             break
@@ -68,6 +69,9 @@ def main_ddl():
             describe_table(table_name)
         elif command == "8":
             drop_all_tables()
+        elif command == "9":
+            table_name = input("Ingrese el nombre de la tabla a habilitar: ")
+            enable_table(table_name)
         else:
             print("Opción no reconocida, por favor intente nuevamente.")
 
@@ -141,23 +145,28 @@ def main_dml():
 
 
 def main():
+    flag = True
     load_initial_data()  
 
-    print("\n------------------------------------------------------")
-    print("""Seleccione el modo de operación:
+    while(flag):
+        print("\n------------------------------------------------------")
+        print("""Seleccione el modo de operación:
 
-    1. DDL (Definición de Datos)
-    2. DML (Manipulación de Datos)
-    """)
+        1. DDL (Definición de Datos)
+        2. DML (Manipulación de Datos)
+        3. Salir
+        """)
 
-    choice = input("Ingrese su elección (1-2): ")
+        choice = input("Ingrese su elección (1-3): ")
 
-    if choice == "1":
-        main_ddl()
-    elif choice == "2":
-        main_dml()
-    else:
-        print("Opción no válida. Por favor, intente de nuevo.")
+        if choice == "1":
+            main_ddl()
+        elif choice == "2":
+            main_dml()
+        elif choice == "3":
+            flag = False
+        else:
+            print("Opción no válida. Por favor, intente de nuevo.")
 
 if __name__ == "__main__":
     main()
