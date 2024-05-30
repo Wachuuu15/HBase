@@ -6,7 +6,6 @@ import json
 tables = {}
 
 def load_initial_data():
-    """Carga los datos iniciales desde un archivo JSON."""
     try:
         with open('data/output.json', 'r') as file:
             initial_data = json.load(file)
@@ -14,11 +13,14 @@ def load_initial_data():
             if table_name not in tables:
                 tables[table_name] = {}
             for row_key, contents in table_data.items():
+                tables[table_name][row_key] = {}
                 for family, columns in contents.items():
-                    if family not in tables[table_name]:
-                        tables[table_name][family] = {}
-                    tables[table_name][family][row_key] = columns
-        print("Datos iniciales cargados correctamente.")
+                    if family not in tables[table_name][row_key]:
+                        tables[table_name][row_key][family] = {}
+                    for column, timestamp_data in columns.items():
+                        tables[table_name][row_key][family][column] = timestamp_data
+        print("Datos iniciales cargados correctamente:")
+        print(tables) 
     except FileNotFoundError:
         print("Archivo de datos inicial no encontrado.")
 

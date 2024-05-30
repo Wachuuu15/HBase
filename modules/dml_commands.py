@@ -8,6 +8,10 @@ def put(table_name, row_key, family_name, column_name, value, timestamp=None):
         print(f"Error: La tabla '{table_name}' no existe.")
         return
 
+    if not is_enabled(table_name):
+        print(f"Error: La tabla '{table_name}' está deshabilitada y no puede recibir datos.")
+        return
+
     if family_name not in tables[table_name]:
         tables[table_name][family_name] = {}
     if row_key not in tables[table_name][family_name]:
@@ -27,28 +31,26 @@ def put(table_name, row_key, family_name, column_name, value, timestamp=None):
     tables[table_name][family_name][row_key][column_name][timestamp] = value
     print(f"Dato insertado/actualizado en {table_name} -> {family_name}[{row_key}][{column_name}] con versión {timestamp}")
 
-def get(table_name, row_key, family_name, column_name, timestamp=None):
-    """Recupera un valor específico de una tabla."""
+
+def get(table_name, row_key, family_name=None, column_name=None, timestamp=None):
     try:
         if table_name not in tables:
             raise KeyError(f"La tabla '{table_name}' no existe.")
-        if family_name not in tables[table_name]:
-            raise KeyError(f"La familia de columnas '{family_name}' no existe en la tabla '{table_name}'.")
-        if row_key not in tables[table_name][family_name]:
-            raise KeyError(f"El row key '{row_key}' no existe en la familia '{family_name}'.")
-        if column_name not in tables[table_name][family_name][row_key]:
-            raise KeyError(f"La columna '{column_name}' no existe en el row key '{row_key}'.")
+        if row_key not in tables[table_name]:
+            raise KeyError(f"El row key '{row_key}' no existe en la tabla '{table_name}'.")
 
-        # Devolver la versión especificada o la más reciente
-        cell_data = tables[table_name][family_name][row_key][column_name]
-        if timestamp:
-            if timestamp in cell_data:
-                return cell_data[timestamp]
+        if family_name:
+            if family_name not in tables[table_name][row_key]:
+                raise KeyError(f"La familia de columnas '{family_name}' no existe en el row key '{row_key}'.")
+            if column_name and column_name not in tables[table_name][row_key][family_name]:
+                raise KeyError(f"La columna '{column_name}' no existe en la familia de columnas '{family_name}'.")
+            if column_name:
+                cell_data = tables[table_name][row_key][family_name][column_name]
             else:
-                raise KeyError(f"No existe un valor para el timestamp '{timestamp}' en la columna '{column_name}'.")
+                return {col: data for col, data in tables[table_name][row_key][family_name].items()}
         else:
-            latest_timestamp = max(cell_data.keys())
-            return cell_data[latest_timestamp]
+            # Si no se especifica familia, devuelve todas las familias en el row key
+            return {fam: cols for fam, cols in tables[table_name][row_key].items()}
     except KeyError as e:
         print(f"Error: {e}")
         return None
@@ -85,8 +87,15 @@ def delete(table_name, row_key, family_name=None, column_name=None):
     try:
         if table_name not in tables:
             raise KeyError(f"La tabla '{table_name}' no existe.")
+    
+        if not is_enabled(table_name):
+            print(f"Error: La tabla '{table_name}' está deshabilitada y no puede recibir datos.")
+            return
+
         if row_key not in tables[table_name]:
             raise KeyError(f"El row key '{row_key}' no existe en la tabla '{table_name}'.")
+        
+
         if family_name:
             if family_name not in tables[table_name][row_key]:
                 raise KeyError(f"La familia de columnas '{family_name}' no existe en el row key '{row_key}'.")
@@ -106,11 +115,16 @@ def delete(table_name, row_key, family_name=None, column_name=None):
 
 def delete_all(table_name):
     """Elimina todas las filas de una tabla específica."""
-    if table_name in tables:
-        tables[table_name].clear()
-        print(f"Todas las filas de la tabla '{table_name}' han sido eliminadas.")
-    else:
+    if table_name not in tables:
         print(f"Error: La tabla '{table_name}' no existe.")
+        return
+
+    if not is_enabled(table_name):
+        print(f"Error: La tabla '{table_name}' está deshabilitada y no se pueden eliminar datos.")
+        return
+
+    tables[table_name].clear()
+    print(f"Todas las filas de la tabla '{table_name}' han sido eliminadas.")
 
 def count(table_name):
     """Cuenta el número de filas en una tabla específica."""
@@ -121,6 +135,8 @@ def count(table_name):
     else:
         print(f"Error: La tabla '{table_name}' no existe.")
         return 0
+    
+
 def truncate(table_name):
     """Trunca una tabla, eliminando todas sus filas y recreándola vacía."""
     if table_name in tables:

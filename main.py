@@ -101,11 +101,14 @@ def main_dml():
         elif command == "2":
             table_name = input("Ingrese el nombre de la tabla: ")
             row_key = input("Ingrese el row key: ")
-            family_name = input("Ingrese el nombre de la familia de columnas: ")
-            column_name = input("Ingrese el nombre de la columna: ")
+            family_name = input("Ingrese el nombre de la familia de columnas (presione Enter para omitir): ")
+            column_name = input("Ingrese el nombre de la columna (presione Enter para omitir): ")
             timestamp_input = input("Ingrese el timestamp si desea obtener una versión específica, de lo contrario presione Enter: ")
 
             timestamp = int(timestamp_input) if timestamp_input.isdigit() else None
+            
+            family_name = None if family_name == "" else family_name
+            column_name = None if column_name == "" else column_name
 
             value = get(table_name, row_key, family_name, column_name, timestamp)
             if value is not None:
