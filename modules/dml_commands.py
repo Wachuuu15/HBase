@@ -140,16 +140,21 @@ def count(table_name):
 def truncate(table_name):
     """Trunca una tabla, eliminando todas sus filas y recreándola vacía."""
     if table_name in tables:
-        print(f"Truncando la tabla '{table_name}'...")
-        print("Paso 1: Deshabilitar la tabla")
-        disable_table(table_name)  
-        print("Paso 2: Eliminar todos los datos de la tabla")
-        tables[table_name].clear()  
-        print("Paso 3: Habilitar la tabla")
-        # Aquí se asume que la tabla simplemente puede ser habilitada de nuevo fácilmente
-        # Dependiendo de cómo esté implementado, podría necesitar un paso explícito para habilitar
-        is_enabled(table_name)  # Asumiendo que existe una función para habilitar
-        print(f"La tabla '{table_name}' ha sido truncada y está lista para ser utilizada de nuevo.")
+        if not is_enabled(table_name):
+            print(f"Error: La tabla '{table_name}' está deshabilitada y no se puede ser truncada.")
+            return
+
+        else:
+            print(f"Truncando la tabla '{table_name}'...")
+            print("Paso 1: Deshabilitar la tabla")
+            disable_table(table_name)  
+            print("Paso 2: Eliminar todos los datos de la tabla")
+            tables[table_name].clear()  
+            print("Paso 3: Habilitar la tabla")
+            # Aquí se asume que la tabla simplemente puede ser habilitada de nuevo fácilmente
+            # Dependiendo de cómo esté implementado, podría necesitar un paso explícito para habilitar
+            is_enabled(table_name)  # Asumiendo que existe una función para habilitar
+            print(f"La tabla '{table_name}' ha sido truncada y está lista para ser utilizada de nuevo.")
     else:
         print(f"Error: La tabla '{table_name}' no existe.")
 

@@ -60,8 +60,6 @@ def disable_table(table_name):
             tables[table_name]['enabled'] = False
             print(f"Tabla '{table_name}' ha sido deshabilitada.")
 
-            print("---------------------------------------")
-            print(tables[table_name])
         elif tables[table_name]['enabled']:
             tables[table_name]['enabled'] = False
             print(f"Tabla '{table_name}' ha sido deshabilitada.")
@@ -78,7 +76,7 @@ def enable_table(table_name):
             print(f"Tabla '{table_name}' ha sido habilitada.")
         elif tables[table_name]['enabled'] == False:
             tables[table_name]['enabled'] = True
-            print(f"Tabla '{table_name}' ha sido deshabilitada.")
+            print(f"Tabla '{table_name}' ha sido habilitada.")
         else:
             print(f"Error: La tabla {table_name} ya ha sido habilitada")
     else:
@@ -109,8 +107,12 @@ def alter_table_add_family(table_name, new_family):
 def drop_table(table_name):
     """Elimina una tabla específica."""
     if table_name in tables:
-        del tables[table_name]
-        print(f"Tabla '{table_name}' eliminada correctamente.")
+        if not is_enabled(table_name):
+            print(f"Error: La tabla '{table_name}' está deshabilitada y no se puede ser elimminada.")
+            return
+        else:
+            del tables[table_name]
+            print(f"Tabla '{table_name}' eliminada correctamente.")
     else:
         print(f"Error: La tabla '{table_name}' no existe.")
 
