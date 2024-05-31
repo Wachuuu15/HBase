@@ -60,6 +60,9 @@ def scan(table_name, family_name=None, start_row=None, end_row=None):
         print(f"Error: La tabla '{table_name}' no existe.")
         return
     
+    if is_enabled(table_name):
+        del tables[table_name]['enabled']
+
     print(f"Datos de la tabla '{table_name}':")
     found_data = False  # Para verificar si se encontraron datos
     for row_key in sorted(tables[table_name]):
@@ -130,6 +133,8 @@ def count(table_name):
     """Cuenta el número de filas en una tabla específica."""
     if table_name in tables:
         row_count = len(tables[table_name])
+        if is_enabled(table_name):
+            row_count = row_count - 1
         print(f"Número de filas en la tabla '{table_name}': {row_count}")
         return row_count
     else:

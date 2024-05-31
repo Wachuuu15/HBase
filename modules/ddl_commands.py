@@ -7,7 +7,7 @@ tables = {}
 
 def load_initial_data():
     try:
-        with open('data/output.json', 'r') as file:
+        with open('data/current_data.json', 'r') as file:
             initial_data = json.load(file)
         for table_name, table_data in initial_data.items():
             if table_name not in tables:
